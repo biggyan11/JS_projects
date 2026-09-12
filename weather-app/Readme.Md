@@ -5,7 +5,7 @@ It uses the **OpenWeatherMap API** to provide real-time weather information and 
 
 ##  Live Demo
 
- [**View Live Demo**](https://YOUR-NETLIFY-URL.netlify.app/)
+ [**View Live Demo**](https://weather-lyy.netlify.app/)
 
 ## Features
 
