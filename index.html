@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Weatherly - Live Weather </title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="bg-layer" id="bgLayer"></div>
+<div class="app">
+
+  <header class="app-header">
+    <div class="logo-block">
+      <div class="logo-mark">W</div>
+      <div>
+        <h1>Weatherly</h1>
+        <p class="subtitle">Live Weather</p>
+      </div>
+    </div>
+    <button class="unit-toggle" id="unitToggle" aria-label="Toggle Celsius or Fahrenheit">
+      <span class="unit-option active" data-unit="C">°C</span>
+      <span class="unit-option" data-unit="F">°F</span>
+    </button>
+  </header>
+
+  <section class="search-section">
+    <div class="search-bar">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <input type="text" id="cityInput" placeholder="Search for a city..." autocomplete="off" />
+      <button class="location-btn" id="locationBtn" title="Use current location" aria-label="Use current location">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2V4M12 20V22M22 12H20M4 12H2M18 12C18 15.31 15.31 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6C15.31 6 18 8.69 18 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="search-btn" id="searchBtn">Search</button>
+    </div>
+    <p class="error-message" id="errorMessage"></p>
+  </section>
+
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <p>Fetching live weather data...</p>
+  </div>
+
+  <main class="content" id="content">
+
+    <section class="current-card" id="currentCard">
+      <div class="current-top">
+        <div class="location-block">
+          <h2 id="cityName">—</h2>
+          <p id="dateTime">—</p>
+        </div>
+        <div class="condition-block">
+          <img id="weatherIcon" src="" alt="" />
+          <p id="conditionText">—</p>
+        </div>
+      </div>
+
+      <div class="temp-hero">
+        <span id="mainTemp">--</span>
+        <span class="temp-unit" id="mainTempUnit">°C</span>
+      </div>
+      <p class="feels-like-inline">Feels like <span id="feelsLikeInline">--°</span></p>
+    </section>
+
+    <section class="details-grid" id="detailsGrid">
+      <div class="detail-card">
+        <span class="detail-tag">HUM</span>
+        <p class="detail-label">Humidity</p>
+        <p class="detail-value" id="humidityValue">--%</p>
+      </div>
+      <div class="detail-card">
+        <span class="detail-tag">WND</span>
+        <p class="detail-label">Wind Speed</p>
+        <p class="detail-value" id="windValue">-- km/h</p>
+      </div>
+      <div class="detail-card">
+        <span class="detail-tag">PRS</span>
+        <p class="detail-label">Pressure</p>
+        <p class="detail-value" id="pressureValue">-- hPa</p>
+      </div>
+      <div class="detail-card">
+        <span class="detail-tag">VIS</span>
+        <p class="detail-label">Visibility</p>
+        <p class="detail-value" id="visibilityValue">-- km</p>
+      </div>
+      <div class="detail-card">
+        <span class="detail-tag">FLK</span>
+        <p class="detail-label">Feels Like</p>
+        <p class="detail-value" id="feelsLikeValue">--°</p>
+      </div>
+      <div class="detail-card">
+        <span class="detail-tag">RIS</span>
+        <p class="detail-label">Sunrise</p>
+        <p class="detail-value" id="sunriseValue">--:--</p>
+      </div>
+      <div class="detail-card">
+        <span class="detail-tag">SET</span>
+        <p class="detail-label">Sunset</p>
+        <p class="detail-value" id="sunsetValue">--:--</p>
+      </div>
+    </section>
+
+    <section class="forecast-section">
+      <h3 class="section-title">5-Day Forecast</h3>
+      <div class="forecast-grid" id="forecastGrid"></div>
+    </section>
+
+  </main>
+
+  <div class="empty-state" id="emptyState">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 16.5C3.79 16.5 2 14.71 2 12.5C2 10.47 3.51 8.79 5.47 8.53C6.19 6.44 8.18 5 10.5 5C13.35 5 15.68 7.11 15.97 9.84C18.24 10.16 20 12.11 20 14.5C20 17.09 17.91 19.19 15.32 19.19H6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p>Search a city </p>
+  </div>
+
+  <footer class="app-footer">
+    <p></p>
+    <p class="credit">Made by Biggyan Aryal</p>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
